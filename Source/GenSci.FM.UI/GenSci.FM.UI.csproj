@@ -17,6 +17,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\GenSci.FM.Core\GenSci.FM.Core.csproj" />
+      <ProjectReference Include="..\GenSci.FM.ElementList.Control\GenSci.FM.ElementList.Control.csproj" />
     </ItemGroup>
 
 </Project>

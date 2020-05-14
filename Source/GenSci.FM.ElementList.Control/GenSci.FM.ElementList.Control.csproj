@@ -1,12 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
-        <Company>GenSci Developer</Company>
-        <Product>GenSci File Manager</Product>
-        <AssemblyVersion>0.1</AssemblyVersion>
-        <FileVersion>0.1</FileVersion>
-        <NeutralLanguage>ru</NeutralLanguage>
+        <UseWPF>true</UseWPF>
+        <RootNamespace>GenSci.FM.Control</RootNamespace>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -19,12 +16,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\GenSci.FM.ElementList\GenSci.FM.ElementList.csproj" />
-      <ProjectReference Include="..\GenSci.FM.NotifyCore\GenSci.FM.Core.Notify.csproj" />
+      <PackageReference Include="System.Windows.Interactivity.WPF" Version="2.0.20525" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="ControlsContexts\" />
+      <ProjectReference Include="..\GenSci.FM.Core\GenSci.FM.Core.csproj" />
     </ItemGroup>
 
 </Project>
