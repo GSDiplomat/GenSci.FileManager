@@ -18,4 +18,12 @@
       <DebugType>none</DebugType>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\GenSci.FM.NotifyCore\GenSci.FM.Core.Notify.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="ControlsContexts\" />
+    </ItemGroup>
+
 </Project>
