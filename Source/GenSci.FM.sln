@@ -7,6 +7,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenSci.FM.UI", "GenSci.FM.U
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenSci.FM.Core", "GenSci.FM.Core\GenSci.FM.Core.csproj", "{66B7AD1A-533A-4F2D-9C93-2EA52EBA2878}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GenSci.FM.Controls", "GenSci.FM.Controls", "{ECEEC531-32BC-42A4-91A6-D1D6B2A9AD76}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GenSci.FM.Model", "GenSci.FM.Model", "{3F24E693-CF44-4128-93BD-3FB4E341E3BE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenSci.FM.Core.Notify", "GenSci.FM.NotifyCore\GenSci.FM.Core.Notify.csproj", "{2BF4E222-0B2A-46F7-8165-7724869FC34A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GenSci.FM.Tests", "GenSci.FM.Tests", "{2DDA4C83-4646-4FD8-ADE9-3C20B4CA66F6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +29,10 @@ Global
 		{66B7AD1A-533A-4F2D-9C93-2EA52EBA2878}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66B7AD1A-533A-4F2D-9C93-2EA52EBA2878}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66B7AD1A-533A-4F2D-9C93-2EA52EBA2878}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BF4E222-0B2A-46F7-8165-7724869FC34A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BF4E222-0B2A-46F7-8165-7724869FC34A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BF4E222-0B2A-46F7-8165-7724869FC34A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BF4E222-0B2A-46F7-8165-7724869FC34A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
