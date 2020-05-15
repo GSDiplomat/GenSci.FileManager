@@ -27,8 +27,10 @@
                 </Style>
             </Grid.Resources>
 
-            <listcontrols:ElementListView Grid.Column="0" DataContext="{Binding ElementListContext[0]}"></listcontrols:ElementListView>
-            <listcontrols:ElementListView Grid.Column="2" DataContext="{Binding ElementListContext[1]}"></listcontrols:ElementListView>
+            <listcontrols:ElementListView Grid.Column="0" DataContext="{Binding ElementListContextLeft}"></listcontrols:ElementListView>
+            <listcontrols:ElementListView Grid.Column="2" DataContext="{Binding ElementListContextRight}"></listcontrols:ElementListView>
+
+            <Button Grid.Column="1" VerticalAlignment="Center" Content="SW" Command="{Binding SwapPanels}"></Button>
         </Grid>
     </Grid>
 </Window>

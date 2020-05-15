@@ -2,6 +2,7 @@
 using GenSci.FM.ElementList;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Input;
@@ -12,9 +13,20 @@ namespace GenSci.FM.Core.Context
     {
         private ElementStruct _selectedElement;
         private GenSciCommand _enterDirectory;
+        private KeyValuePair<DriveInfo, string> _selectedDrive;
 
-        public ElementListModel ElementListModel { get; set; } = new ElementListModel();
+        public ElementListContext()
+        {
+            foreach (var drive in DriveInfo.GetDrives())
+            {
+                DrivePaths.Add(drive, drive.Name);
+            }
 
+            SelectedDrive = DrivePaths.First();
+        }
+
+        public ElementListModel ElementListModel { get; } = new ElementListModel();
+        public Dictionary<DriveInfo, string> DrivePaths { get; } = new Dictionary<DriveInfo, string>();
 
         public ElementStruct SelectedElement
         {
@@ -28,6 +40,26 @@ namespace GenSci.FM.Core.Context
                 }
             }
         }
+
+        public KeyValuePair<DriveInfo, string> SelectedDrive
+        {
+            get => _selectedDrive;
+            set
+            {
+                if (value.Key != _selectedDrive.Key)
+                {
+                    if (_selectedDrive.Key != null)
+                        DrivePaths[_selectedDrive.Key] = ElementListModel.AddressLine;
+
+                    _selectedDrive = value;
+
+                    ElementListModel.AddressLine = DrivePaths[value.Key];
+
+                    OnPropertyChanged();
+                }
+            }
+        }
+
 
         public GenSciCommand EnterDirectory => _enterDirectory ??
             (_enterDirectory = new GenSciCommand(
@@ -44,7 +76,7 @@ namespace GenSci.FM.Core.Context
                     }
                     else if (SelectedElement.ElementType == eElementType.Directory)
                     {
-                        ElementListModel.AddressLine += SelectedElement.FileName;
+                        ElementListModel.AddressLine += SelectedElement.FileName + "\\";
                     }
                 }));
     }

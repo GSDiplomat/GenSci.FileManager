@@ -11,10 +11,12 @@
         <Grid.RowDefinitions>
             <RowDefinition Height=".1*" />
             <RowDefinition Height=".1*" />
-            <RowDefinition Height="1*" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <TextBox Grid.Row="1" VerticalAlignment="Center" Text="{Binding ElementListModel.AddressLine, UpdateSourceTrigger=LostFocus}"></TextBox>
+        <ComboBox VerticalAlignment="Center" ItemsSource="{Binding DrivePaths}" DisplayMemberPath="Key" SelectedItem="{Binding SelectedDrive, Mode=TwoWay}"></ComboBox>
+        
+        <TextBox Grid.Row="1" VerticalAlignment="Bottom" Text="{Binding ElementListModel.AddressLine, UpdateSourceTrigger=LostFocus}"></TextBox>
 
         <ListView Grid.Row="2" ItemsSource="{Binding ElementListModel.Files}" SelectedItem="{Binding SelectedElement}">
             <ListView.View>
