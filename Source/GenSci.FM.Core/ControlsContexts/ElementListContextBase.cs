@@ -3,6 +3,7 @@ using GenSci.FM.ElementList;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Windows.Input;
 
 namespace GenSci.FM.Core.Context
 {
@@ -10,7 +11,7 @@ namespace GenSci.FM.Core.Context
     {
         protected IElementListCommand _elementListCommands;
         
-        private GenSciCommand _enterDirectory;
+        private ICommand _enterDirectory;
         
         private bool _isActive = false;
         private ElementStruct _selectedElement;
@@ -56,7 +57,7 @@ namespace GenSci.FM.Core.Context
             }
         }
 
-        public GenSciCommand EnterDirectory => _enterDirectory ?? (_enterDirectory = new GenSciCommand(obj => _elementListCommands.EnterDirectory()));
+        public ICommand EnterDirectory => _enterDirectory ?? (_enterDirectory = new GenSciCommand(obj => _elementListCommands.EnterDirectory()));
 
         public abstract void CreateElementListCommand();
     }

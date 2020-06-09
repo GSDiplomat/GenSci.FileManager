@@ -8,7 +8,6 @@ namespace GenSci.FM.Core.Context
 {
     public class ElementListContext : ElementListContextBase
     {
-
         private KeyValuePair<DriveInfo, string> _selectedDrive;
 
         public override ElementListModel ElementListModel { get; } = new ElementListModel();
