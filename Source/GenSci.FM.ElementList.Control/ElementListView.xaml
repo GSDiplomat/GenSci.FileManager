@@ -7,6 +7,25 @@
              xmlns:inter="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="200">
+    <UserControl.Resources>
+        <Style TargetType="ListView">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsActive}" Value="True">
+                    <Setter Property="BorderBrush" Value="LightBlue"/>
+                    <!--<Setter Property="FocusManager.FocusedElement" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}"></Setter>-->
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="TextBox">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsActive}" Value="True">
+                    <Setter Property="Background" Value="LightBlue"/>
+                    <!--<Setter Property="FocusManager.FocusedElement" Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}"></Setter>-->
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height=".1*" />
@@ -29,6 +48,10 @@
                 <inter:EventTrigger EventName="MouseDoubleClick">
                     <inter:InvokeCommandAction
                             Command="{Binding EnterDirectory}"/>
+                </inter:EventTrigger>
+                <inter:EventTrigger EventName="MouseLeftButtonUp">
+                    <inter:InvokeCommandAction
+                            Command="{Binding ChangeActivePanel}"/>
                 </inter:EventTrigger>
             </inter:Interaction.Triggers>
         </ListView>

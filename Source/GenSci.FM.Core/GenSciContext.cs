@@ -1,19 +1,24 @@
 ﻿using GenSci.FM.Core.Notify;
+using GenSci.FM.ElementList;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Windows.Input;
 
 namespace GenSci.FM.Core.Context
 {
-    public class GenSciContext : NotifyPropertyBase
+    public class GenSciContext : GenSciContextBase
     {
-        private GenSciCommand _swapPanels;
-        private ElementListContext _elementListContextLeft = new ElementListContext();
-        private ElementListContext _elementListContextRight = new ElementListContext();
-        private ElementListContext _activeElementList;
+        public GenSciContext()
+        {
+            _elementListContextLeft = new ElementListContext { IsActive = true };
+            _elementListContextRight = new ElementListContext();
 
-        public ElementListContext ElementListContextLeft
+            _genSciOperation = new GenSciOperation(this);
+        }
+
+        public override ElementListContextBase ElementListContextLeft
         {
             get => _elementListContextLeft;
             set
@@ -26,7 +31,7 @@ namespace GenSci.FM.Core.Context
             }
         }
 
-        public ElementListContext ElementListContextRight
+        public override ElementListContextBase ElementListContextRight
         {
             get => _elementListContextRight;
             set
@@ -37,30 +42,6 @@ namespace GenSci.FM.Core.Context
                     OnPropertyChanged();
                 }
             }
-        }
-
-        public ElementListContext ActiveElementList
-        {
-            get => _activeElementList;
-            set
-            {
-                if (value != _activeElementList)
-                {
-                    _activeElementList = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
-        public GenSciCommand SwapPanels => _swapPanels ?? (_swapPanels = new GenSciCommand(obj => Swap()));
-
-        private void Swap()
-        {
-            var templContext = ElementListContextLeft;
-
-            ElementListContextLeft = ElementListContextRight;
-
-            ElementListContextRight = templContext;
         }
     }
 }

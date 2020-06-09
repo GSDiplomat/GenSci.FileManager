@@ -48,6 +48,8 @@ namespace GenSci.FM.ElementList
             }
         }
 
+        public void RefreshDirectory() => Files = GetDirectoryElements();
+
         private ObservableCollection<ElementStruct> GetDirectoryElements()
         {
             var resultCollection = new ObservableCollection<ElementStruct>();
