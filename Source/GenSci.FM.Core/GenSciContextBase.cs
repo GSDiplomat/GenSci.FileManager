@@ -2,7 +2,7 @@
 
 namespace GenSci.FM.Core.Context
 {
-    public abstract class GenSciContextBase : NotifyPropertyBase
+    public abstract class GenSciContextBase
     {
         protected ElementListContextBase _elementListContextLeft;
         protected ElementListContextBase _elementListContextRight;
@@ -17,12 +17,20 @@ namespace GenSci.FM.Core.Context
         private GenSciCommand _createElement;
         private GenSciCommand _renameElement;
 
-        public abstract ElementListContextBase ElementListContextLeft { get; set; }
+        public ElementListContextBase ElementListContextLeft
+        {
+            get => _elementListContextLeft;
+            set => _elementListContextLeft = value;
+        }
 
-        public abstract ElementListContextBase ElementListContextRight { get; set; }
+        public ElementListContextBase ElementListContextRight
+        {
+            get => _elementListContextRight;
+            set => _elementListContextRight = value;
+        }
 
         public GenSciCommand SwapPanels => _swapPanels ??
-            (_swapPanels = new GenSciCommand(obj => _genSciOperation.SwapPanels()));
+                (_swapPanels = new GenSciCommand(obj => _genSciOperation.SwapPanels()));
 
         public GenSciCommand ChangeActivePanel => _changeActivePanel ??
             (_changeActivePanel = new GenSciCommand(obj => _genSciOperation.ChangeActivePanel()));
@@ -45,5 +53,9 @@ namespace GenSci.FM.Core.Context
 
         public GenSciCommand RenameElement => _renameElement ??
             (_renameElement = new GenSciCommand(obj => _genSciOperation.RenameElement()));
+
+        public abstract void CreateElementListContext();
+
+        public abstract void CreateGenSciOperation();
     }
 }

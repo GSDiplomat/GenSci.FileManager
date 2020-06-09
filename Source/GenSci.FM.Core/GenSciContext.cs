@@ -10,38 +10,15 @@ namespace GenSci.FM.Core.Context
 {
     public class GenSciContext : GenSciContextBase
     {
-        public GenSciContext()
+        public override void CreateElementListContext()
         {
             _elementListContextLeft = new ElementListContext { IsActive = true };
             _elementListContextRight = new ElementListContext();
+        }
 
+        public override void CreateGenSciOperation()
+        {
             _genSciOperation = new GenSciOperation(this);
-        }
-
-        public override ElementListContextBase ElementListContextLeft
-        {
-            get => _elementListContextLeft;
-            set
-            {
-                if (value != _elementListContextLeft)
-                {
-                    _elementListContextLeft = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
-        public override ElementListContextBase ElementListContextRight
-        {
-            get => _elementListContextRight;
-            set
-            {
-                if (value != _elementListContextRight)
-                {
-                    _elementListContextRight = value;
-                    OnPropertyChanged();
-                }
-            }
         }
     }
 }

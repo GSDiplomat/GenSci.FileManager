@@ -14,11 +14,10 @@ namespace GenSci.FM.UI
     /// </summary>
     public partial class App : Application
     {
-        GenSciContext GenSciContext { get; } = new GenSciContext();
-
         protected override void OnStartup(StartupEventArgs e)
         {
-            var genSciFile = new MainWindow { DataContext = GenSciContext };
+            var contextCreater = new ContextCreater(new GenSciContext());
+            var genSciFile = new MainWindow { DataContext = contextCreater.GenSciContext };
 
             genSciFile.ShowDialog();
         }
