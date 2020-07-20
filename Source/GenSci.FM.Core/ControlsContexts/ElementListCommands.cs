@@ -15,23 +15,26 @@ namespace GenSci.FM.Core.Context
 
         public void EnterDirectory()
         {
-            if (_elementListContext.SelectedElement.FileName == "..")
+            if (_elementListContext.SelectedElement != null)
             {
-                var separetedPath = _elementListContext.ElementListModel.AddressLine.Split("\\", StringSplitOptions.RemoveEmptyEntries);
-
-                if (separetedPath.Length > 1)
+                if (_elementListContext.SelectedElement.FileName == "..")
                 {
-                    string addressLine = _elementListContext.ElementListModel.AddressLine;
+                    var separetedPath = _elementListContext.ElementListModel.AddressLine.Split("\\", StringSplitOptions.RemoveEmptyEntries);
 
-                    addressLine = addressLine.Remove(addressLine.Length - 1);
-                    addressLine = addressLine.Replace(separetedPath.Last(), "");
+                    if (separetedPath.Length > 1)
+                    {
+                        string addressLine = _elementListContext.ElementListModel.AddressLine;
 
-                    _elementListContext.ElementListModel.AddressLine = addressLine;
+                        addressLine = addressLine.Remove(addressLine.Length - 1);
+                        addressLine = addressLine.Replace(separetedPath.Last(), "");
+
+                        _elementListContext.ElementListModel.AddressLine = addressLine;
+                    }
                 }
-            }
-            else if (_elementListContext.SelectedElement.ElementType == eElementType.Directory)
-            {
-                _elementListContext.ElementListModel.AddressLine += _elementListContext.SelectedElement.FileName + "\\";
+                else if (_elementListContext.SelectedElement.ElementType == eElementType.Directory)
+                {
+                    _elementListContext.ElementListModel.AddressLine += _elementListContext.SelectedElement.FileName + "\\";
+                }
             }
         }
     }

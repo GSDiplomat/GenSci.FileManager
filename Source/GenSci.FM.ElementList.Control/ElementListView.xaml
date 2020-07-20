@@ -49,7 +49,7 @@
                     <inter:InvokeCommandAction
                             Command="{Binding EnterDirectory}"/>
                 </inter:EventTrigger>
-                <inter:EventTrigger EventName="MouseLeftButtonUp">
+                <inter:EventTrigger EventName="GotFocus">
                     <inter:InvokeCommandAction
                             Command="{Binding ChangeActivePanel}"/>
                 </inter:EventTrigger>
